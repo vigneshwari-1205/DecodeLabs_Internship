@@ -29,6 +29,13 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
 - `index.html` — Portfolio homepage
 - `404.html` — Custom error page
 
+  ## 📷 Screenshots
+| Step | Screenshot |
+|------|-----------|
+| S3 Bucket Configuration | `bucket-settings.png` |
+| Static Website Hosting Enabled | `hosting-enabled.png` |
+| Live Website | `live-site.png` |
+
 ## 💡 Key Learnings
 - S3 static website hosting works differently from S3 object storage — 
   it requires enabling the specific "Static Website Hosting" property, 
@@ -37,13 +44,6 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
   S3 blocks public access by default for security.
 - A custom 404 error page improves user experience for broken links, 
   even on serverless architecture.
-
-  ## 📷 Screenshots
-| Step | Screenshot |
-|------|-----------|
-| S3 Bucket Configuration | `bucket-settings.png` |
-| Static Website Hosting Enabled | `hosting-enabled.png` |
-| Live Website | `live-site.png` |
   
 ## 🎯 Outcome
 A publicly accessible, low-latency static website hosted entirely on AWS S3 —

@@ -54,10 +54,10 @@ custom page loads successfully.
 ## 📷 Screenshots
 | Step | Screenshot |
 |------|-----------|
-| EC2 Instance Running | `screenshots/ec2-instance-running.png` |
-| SSH Connection Established | `screenshots/ssh-connection.png` |
-| Nginx Active Status | `screenshots/nginx-status.png` |
-| Live Webpage | `screenshots/webpage-live.png` |
+| EC2 Instance Running | `ec2-running.png` |
+| SSH Connection Established | `ssh-connection.png` |
+| Nginx Active Status | `nginx-status.png` |
+| Live Webpage | `webpage-live.png` |
 
 ## 💡 Key Learnings
 - Security Groups follow an **allow-only** model — all traffic is 

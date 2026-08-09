@@ -12,7 +12,7 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
 
 ## 🛠️ Tech Used
 - AWS S3 (Static Website Hosting)
-- Bucket Policy (Public Read Access via IAM)
+- S3 Bucket Policy (Public Read Access via `s3:GetObject`)
 - HTML5 / CSS3
 
 ## 📋 Steps Followed
@@ -29,6 +29,26 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
 - `index.html` — Portfolio homepage
 - `404.html` — Custom error page
 
+## 💡 Key Learnings
+- S3 static website hosting works differently from S3 object storage — 
+  it requires enabling the specific "Static Website Hosting" property, 
+  not just uploading files.
+- Public read access must be explicitly granted via a Bucket Policy; 
+  S3 blocks public access by default for security.
+- A custom 404 error page improves user experience for broken links, 
+  even on serverless architecture.
+
+  ## 📷 Screenshots
+| Step | Screenshot |
+|------|-----------|
+| S3 Bucket Configuration | `bucket-settings.png` |
+| Static Website Hosting Enabled | `hosting-enabled.png` |
+| Live Website | `live-site.png` |
+  
 ## 🎯 Outcome
 A publicly accessible, low-latency static website hosted entirely on AWS S3 —
 demonstrating serverless hosting, IAM-based access control, and cloud storage architecture.
+
+---
+**Internship:** Cloud Computing (AWS/Azure) — DecodeLabs  
+**Project:** 1 of 4 — The Global Launch

@@ -55,7 +55,7 @@ INSERT INTO Interns01 (InternID, Name, Role, Email) VALUES
 ![Python Output](python-output.png)
 
 **RDS Instance (Private, Available)**
-![RDS Instance Details](rds-instance-details.png)
+![RDS Instance Details](rds-database-details.png)
 
 **Security Group Rules**
 ![Security Group Rules](security-group-rules.png)

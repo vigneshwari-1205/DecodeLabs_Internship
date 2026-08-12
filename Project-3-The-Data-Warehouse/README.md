@@ -1,34 +1,54 @@
 # Project 3: The Data Warehouse
 
-## Scenario
-An e-commerce company is struggling with Excel sheets to manage customer data. As their user base grows, they need a robust, scalable, and secure cloud database to store user records reliably.
+## 📌 Objective
+Provision a managed cloud database on AWS RDS inside a secure, private network architecture, and verify reliable data persistence — simulating a real-world Database Administrator / Cloud Infrastructure task for an e-commerce company outgrowing spreadsheet-based data management.
 
-## Mission
-Provision a managed cloud database using Amazon RDS inside a private, secure network — accessible only through a bastion host — and verify data persistence.
+## 🛠️ Tools & Technologies
+- AWS VPC (Custom VPC, Public & Private Subnets)
+- AWS EC2 (Bastion Host — Amazon Linux 2023)
+- AWS RDS (MySQL Community Engine, db.t4g.micro)
+- AWS Security Groups (Firewall)
+- MySQL Workbench (SSH Tunnel Connection)
+- Python (pymysql)
+- SSH (Windows PowerShell)
 
-## Architecture
-- **VPC**: Custom VPC (10.0.0.0/16) with public and private subnets across 2 Availability Zones
-- **Public Subnet**: Hosts the EC2 bastion host with a public IP
-- **Private Subnet**: Hosts the RDS MySQL instance — no public IP, no direct internet access
-- **Bastion Host**: EC2 instance used as an SSH gateway into the private subnet
-- **Security Groups**:
-  - RDS SG allows inbound MySQL (port 3306) only from the bastion's SG
-  - Bastion SG allows inbound SSH (port 22) only from my IP
-- **Connection Path**: Local Machine → SSH Tunnel → Bastion (EC2) → RDS (Private Subnet)
+## 🚀 Steps Performed
 
-## Steps Performed
-1. Created a custom VPC with public and private subnets across 2 AZs
-2. Attached an Internet Gateway and configured route tables
-3. Launched an EC2 bastion host in the public subnet
-4. Created a DB Subnet Group using the private subnets
-5. Provisioned an Amazon RDS MySQL instance with Public access disabled
-6. Restricted the RDS security group to allow port 3306 only from the bastion's security group
-7. Connected to RDS via MySQL Workbench using Standard TCP/IP over SSH
-8. Created the `Interns` table with schema constraints
-9. Inserted dummy records and verified persistence with a SELECT query
-10. Verified connectivity independently using a Python script (pymysql) over an SSH tunnel
+### 1. Built the Network Foundation
+- Created a custom VPC with public and private subnets across 2 Availability Zones
+- Attached an Internet Gateway and configured route tables:
+  - Public subnets → route to Internet Gateway
+  - Private subnets → no internet route (fully isolated)
 
-## Database Schema
+### 2. Launched the Bastion Host
+- Launched an EC2 instance (Amazon Linux 2023) in the **public subnet**
+- This instance acts as a secure SSH gateway into the private network
+
+### 3. Provisioned the RDS Instance
+- Engine: MySQL Community
+- Instance class: db.t4g.micro (Free Tier eligible)
+- Storage: 20 GB General Purpose SSD
+- Deployed into a **DB Subnet Group** using only private subnets
+- **Public access: Disabled** — no direct route from the internet
+
+### 4. Configured Security Groups
+
+| Type | Port | Source |
+|---|---|---|
+| MySQL/Aurora | 3306 | Bastion Host Security Group only |
+| SSH | 22 | My IP only |
+
+### 5. Connected via SSH Tunnel
+Bridged the network isolation using the bastion as a jump host:
+ssh -i "servercommander.pem" -L 3306:<RDS-Endpoint>:3306 ec2-user@<Bastion-Public-IP>
+
+### 6. Connected with MySQL Workbench
+- Connection Method: **Standard TCP/IP over SSH**
+- SSH Hostname: Bastion public IP
+- MySQL Hostname: RDS endpoint
+- Verified successful connection despite a version-compatibility notice (RDS running MySQL 8.4.9)
+
+### 7. Designed the Schema
 ```sql
 CREATE TABLE Interns01 (
   InternID INT PRIMARY KEY,
@@ -38,38 +58,51 @@ CREATE TABLE Interns01 (
 );
 ```
 
-## Sample Data
+### 8. Inserted Dummy Records
 ```sql
 INSERT INTO Interns01 (InternID, Name, Role, Email) VALUES
-(1, 'Vigneshwari', 'Cloud Intern', 'vignesh@decodelabs.com'),
+(1, 'Vignesh', 'Cloud Intern', 'vignesh@decodelabs.com'),
 (2, 'Arjun', 'DevOps Intern', 'arjun@decodelabs.com'),
 (3, 'Priya', 'Data Intern', 'priya@decodelabs.com');
 ```
 
-## Verification
+### 9. Verified Data Persistence
+```sql
+SELECT * FROM Interns01;
+```
+Confirmed all 3 records returned successfully in MySQL Workbench.
 
-**MySQL Workbench**
-![Workbench Select Query](workbench-select-query.png)
+### 10. Bonus: Verified via Python (pymysql)
+Connected independently through the same SSH tunnel using a Python script and printed all records — confirming the database is programmatically accessible for real application use.
 
-**Python Script (Bonus)**
-![Python Output](python-output.png)
+## 📁 Files in this Repo
+- `test_db.py` — Python script verifying RDS connectivity via pymysql
 
-**RDS Instance (Private, Available)**
+## 📷 Screenshots
+
+**RDS Instance (Available, Private)**
 ![RDS Instance Details](rds-database-details.png)
 
-**Security Group Rules**
+**Security Group — Port 3306 Restricted**
 ![Security Group Rules](security-group-rules.png)
 
-## Core Skills Demonstrated
-- **Amazon RDS** — Managed relational database provisioning, engine/instance configuration
-- **VPC Networking** — Public/private subnet design, route tables, isolation
-- **Bastion Host Pattern** — Secure SSH-tunneled access to private resources
-- **Security Groups** — Least-privilege, source-restricted firewall rules
-- **SQL** — DDL (CREATE TABLE with constraints) and DML (INSERT, SELECT)
-- **Python (pymysql)** — Programmatic database connectivity over SSH
+**MySQL Workbench — Table & SELECT Query**
+![Workbench Select Query](workbench-select-query.png)
 
-## Tools Used
-AWS VPC · Amazon EC2 · Amazon RDS (MySQL) · MySQL Workbench · Python (pymysql) · SSH Tunneling
+**Python Script Output**
+![Python Output](python-output.png)
 
-## Key Learning
-A publicly accessible database is a security risk. Placing RDS in a private subnet and requiring an SSH tunnel through a bastion host keeps the database completely unreachable from the public internet while remaining fully usable by authorized engineers.
+
+## 💡 Key Learnings
+- A publicly accessible database is a compromised database — placing RDS in a private subnet with public access disabled removes it entirely from internet reach.
+- Security Groups are stateful firewalls; restricting the source to another Security Group (not an IP range) is far more secure and scalable than IP-based rules.
+- An SSH tunnel through a bastion host is the standard pattern for reaching private cloud resources without exposing them directly.
+- Schema constraints (PRIMARY KEY, UNIQUE, NOT NULL) enforce data integrity at the database level, preventing bad data before it's ever written.
+- AWS manages the underlying hardware and OS patching for RDS, but the schema design and access control remain the engineer's responsibility.
+
+## ✅ Result
+Successfully architected and secured a production-style managed database layer on AWS RDS, demonstrating private network isolation, bastion-based access control, and Database-as-a-Service (DBaaS) fundamentals.
+
+---
+**Internship:** Cloud Computing (AWS/Azure) — DecodeLabs
+**Project:** 3 of 4 — The Data Warehouse

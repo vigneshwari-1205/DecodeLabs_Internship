@@ -105,4 +105,5 @@ Successfully architected and secured a production-style managed database layer o
 
 ---
 **Internship:** Cloud Computing (AWS/Azure) — DecodeLabs
+
 **Project:** 3 of 4 — The Data Warehouse

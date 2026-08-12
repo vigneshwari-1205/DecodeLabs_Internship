@@ -40,6 +40,9 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
 **Live Website**
 ![Live Website](live-site.png)
 
+**404 Error**
+![404 Error](404Errorpage.png)
+
 ## 💡 Key Learnings
 - S3 static website hosting works differently from S3 object storage — 
   it requires enabling the specific "Static Website Hosting" property, 

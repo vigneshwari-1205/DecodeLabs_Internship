@@ -30,21 +30,23 @@ scenario-based challenges.
 
 
 ## 📌 Repository Structure
+```
 DecodeLabs_Internship/
 ├── README.md
 ├── Project-1-Global-Launch/
-│ ├── README.md
-│ ├── index.html
-│ ├── 404.html
-│ └── screenshots (bucket-settings, hosting-enabled, live-site,404Errorpage)
+│   ├── README.md
+│   ├── index.html
+│   ├── 404.html
+│   └── screenshots (bucket-settings, hosting-enabled, live-site, 404Errorpage)
 ├── Project-2-ServerCommander/
-│ ├── README.md
-│ ├── index.html
-│ └── screenshots (ec2-running, ssh-connection, nginx-status, webpage-live)
+│   ├── README.md
+│   ├── index.html
+│   └── screenshots (ec2-running, ssh-connection, nginx-status, webpage-live)
 └── Project-3-The-Data-Warehouse/
-  ├── README.md
-  ├── test_db.py
-  └── screenshots (rds-database-details, security-group-rules, workbench-select-query, python-output)
+    ├── README.md
+    ├── test_db.py
+    └── screenshots (rds-database-details, security-group-rules, workbench-select-query, python-output)
+```
 
 ## 📫 Contact
 **Vigneshwari K**  

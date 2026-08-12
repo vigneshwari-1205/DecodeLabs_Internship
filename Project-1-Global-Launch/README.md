@@ -29,12 +29,16 @@ http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com
 - `index.html` — Portfolio homepage
 - `404.html` — Custom error page
 
-  ## 📷 Screenshots
-| Step | Screenshot |
-|------|-----------|
-| S3 Bucket Configuration | `bucket-settings.png` |
-| Static Website Hosting Enabled | `hosting-enabled.png` |
-| Live Website | `live-site.png` |
+## 📷 Screenshots
+
+**S3 Bucket Configuration**
+![S3 Bucket Configuration](bucket-settings.png)
+
+**Static Website Hosting Enabled**
+![Static Website Hosting Enabled](hosting-enabled.png)
+
+**Live Website**
+![Live Website](live-site.png)
 
 ## 💡 Key Learnings
 - S3 static website hosting works differently from S3 object storage — 

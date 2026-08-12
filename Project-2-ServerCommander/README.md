@@ -52,12 +52,18 @@ Accessed `http://<Public-IP>` in the browser — confirmed the
 custom page loads successfully.
 
 ## 📷 Screenshots
-| Step | Screenshot |
-|------|-----------|
-| EC2 Instance Running | `ec2-running.png` |
-| SSH Connection Established | `ssh-connection.png` |
-| Nginx Active Status | `nginx-status.png` |
-| Live Webpage | `webpage-live.png` |
+
+**EC2 Instance Running**
+![EC2 Instance Running](ec2-running.png)
+
+**SSH Connection Established**
+![SSH Connection Established](ssh-connection.png)
+
+**Nginx Active Status**
+![Nginx Active Status](nginx-status.png)
+
+**Live Webpage**
+![Live Webpage](webpage-live.png)
 
 ## 💡 Key Learnings
 - Security Groups follow an **allow-only** model — all traffic is 

@@ -19,14 +19,17 @@ scenario-based challenges.
 | 1 | [The Global Launch](./Project-1-Global-Launch) | Hosted a static portfolio website using AWS S3 Static Website Hosting — fully serverless deployment | [View Live](http://portfolio-project-2026.s3-website-us-east-1.amazonaws.com) | ✅ Completed |
 | 2 | [The Server Commander](./Project-2-ServerCommander) | Provisioned an AWS EC2 instance, configured Security Groups, connected via SSH, and deployed Nginx to host a custom webpage | — | ✅ Completed |
 | 3 | [The Data Warehouse](./Project-3-The-Data-Warehouse) | Provisioned a secure Amazon RDS MySQL instance in a private subnet, accessible only via SSH-tunneled bastion host. Created a structured table and verified persistence via MySQL Workbench and Python | — | ✅ Completed |
+| 4 | [The Serverless Logic](./Project-4-Serverless-Logic) | Deployed a serverless "Cost Calculator" API using AWS Lambda — event-driven compute with zero idle cost, verified via test invocations and CloudWatch logs | — | ✅ Completed |
 
 ## 🧰 Core Skills Demonstrated
 - **AWS S3** — Static website hosting, bucket policies, public access configuration
 - **AWS EC2** — Instance provisioning, Security Groups, key-pair authentication
 - **AWS RDS** — Managed database provisioning, private subnet isolation, secure access via bastion
+- **AWS Lambda** — Serverless function deployment, event-driven architecture, IAM execution roles
 - **Linux Administration** — SSH remote access, package management, service control
 - **Web Server Deployment** — Nginx installation and configuration
 - **Cloud Security Fundamentals** — IAM basics, firewall rules, least-privilege access
+- **Monitoring & Logging** — Amazon CloudWatch logs and performance metrics
 
 
 ## 📌 Repository Structure
@@ -34,18 +37,22 @@ scenario-based challenges.
 DecodeLabs_Internship/
 ├── README.md
 ├── Project-1-Global-Launch/
-│   ├── README.md
-│   ├── index.html
-│   ├── 404.html
-│   └── screenshots (bucket-settings, hosting-enabled, live-site, 404Errorpage)
+│ ├── README.md
+│ ├── index.html
+│ ├── 404.html
+│ └── screenshots (bucket-settings, hosting-enabled, live-site, 404Errorpage)
 ├── Project-2-ServerCommander/
-│   ├── README.md
-│   ├── index.html
-│   └── screenshots (ec2-running, ssh-connection, nginx-status, webpage-live)
-└── Project-3-The-Data-Warehouse/
-    ├── README.md
-    ├── test_db.py
-    └── screenshots (rds-database-details, security-group-rules, workbench-select-query, python-output)
+│ ├── README.md
+│ ├── index.html
+│ └── screenshots (ec2-running, ssh-connection, nginx-status, webpage-live)
+├── Project-3-The-Data-Warehouse/
+│ ├── README.md
+│ ├── test_db.py
+│ └── screenshots (rds-database-details, security-group-rules, workbench-select-query, python-output)
+└── Project-4-Serverless-Logic/
+  ├── README.md
+  ├── lambda_function.py
+  └── screenshots (function-overview, lambda-code, test-event, execution-result, cloudwatch-logs)
 ```
 
 ## 📫 Contact
@@ -57,4 +64,4 @@ LinkedIn : www.linkedin.com/in/vigneshwari-k-53217a332
 
 
 ---
-*This repository is actively updated as each project milestone is completed.*
+*This repository documents all 4 completed project milestones of the Cloud Computing (AWS/Azure) Internship at DecodeLabs.*
